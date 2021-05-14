@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var blurAmount: CGFloat = 0
+    @State private var blurAmount: CGFloat = 0 {
+        didSet {
+            print("New value is \(blurAmount)")  // does not output
+            // property observer is not triggering
+            // need to add functionality to wrapped binding to work
+        }
+    }
     
     var body: some View {
         VStack {
