@@ -28,10 +28,10 @@ struct ContentView: View {
         let beginImage = CIImage(image: inputImage)
         
         let context = CIContext()
-        let currentFilter = CIFilter.pixellate()
+        let currentFilter = CIFilter.crystallize()
         
         currentFilter.inputImage = beginImage
-        currentFilter.scale = 100
+        currentFilter.radius = 200
         
         guard let outputImage = currentFilter.outputImage
         else { return }
