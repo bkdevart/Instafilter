@@ -14,6 +14,7 @@
 		CA2F4941264EEF29005C7F15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA2F4940264EEF29005C7F15 /* Assets.xcassets */; };
 		CA2F4944264EEF29005C7F15 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA2F4943264EEF29005C7F15 /* Preview Assets.xcassets */; };
 		CA2F4947264EEF29005C7F15 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA2F4945264EEF29005C7F15 /* LaunchScreen.storyboard */; };
+		CAA631812652F1100053A4BC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA631802652F1100053A4BC /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CA2F4943264EEF29005C7F15 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CA2F4946264EEF29005C7F15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA2F4948264EEF29005C7F15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAA631802652F1100053A4BC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				CA2F4937264EEF28005C7F15 /* AppDelegate.swift */,
 				CA2F4939264EEF28005C7F15 /* SceneDelegate.swift */,
 				CA2F493B264EEF28005C7F15 /* ContentView.swift */,
+				CAA631802652F1100053A4BC /* ImagePicker.swift */,
 				CA2F4940264EEF29005C7F15 /* Assets.xcassets */,
 				CA2F4945264EEF29005C7F15 /* LaunchScreen.storyboard */,
 				CA2F4948264EEF29005C7F15 /* Info.plist */,
@@ -150,6 +153,7 @@
 			files = (
 				CA2F4938264EEF28005C7F15 /* AppDelegate.swift in Sources */,
 				CA2F493F264EEF28005C7F15 /* Instafilter.xcdatamodeld in Sources */,
+				CAA631812652F1100053A4BC /* ImagePicker.swift in Sources */,
 				CA2F493A264EEF28005C7F15 /* SceneDelegate.swift in Sources */,
 				CA2F493C264EEF28005C7F15 /* ContentView.swift in Sources */,
 			);
