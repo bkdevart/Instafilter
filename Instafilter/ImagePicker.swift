@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+/*
+ Process
+ 1. create SwiftUI view that conformed to UIViewControllerRepresentable
+ 2. Gave it a makeUIViewController method that created a UIKit View Controller (UIImagePickerController)
+ 3. Added nested coordinator class as a bridge between the UIKit View Controller and our SwiftUI view
+ 4. We gave that coordinator a didFinishPickingMediaWithInfo method which we triggered by UIKit when an image was chosen
+ 5. We gave our image picker an @Binding property so it can send images back to the parent view
+ */
+
 struct ImagePicker: UIViewControllerRepresentable {
     // NSObject is parent class of everything in UIKit - lets ObjC check for functionality
     // NSImagePickerControllerDelegate allows us to add activities when user picks an image (provides functionality)
