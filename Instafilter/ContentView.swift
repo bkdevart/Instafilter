@@ -18,8 +18,17 @@ struct ContentView: View {
                     Rectangle()
                         .fill(Color.secondary)
                     
-                    // display the image
-                }.onTapGesture {
+                    if image != nil {
+                        image?
+                            .resizable()
+                            .scaledToFit()
+                    } else {
+                        Text("Tap to select a picture")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                }
+                .onTapGesture {
                     // select an image
                 }
                 
