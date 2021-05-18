@@ -20,7 +20,17 @@ struct ContentView: View {
     let context = CIContext()
     
     var body: some View {
-        NavigationView {
+        let intensity = Binding<Double>(
+            get: {
+                self.filterIntensity
+            },
+            set: {
+                self.filterIntensity = $0
+                self.applyProcessing()
+            }
+        )
+        
+        return NavigationView {
             VStack {
                 ZStack {
                     Rectangle()
@@ -42,7 +52,7 @@ struct ContentView: View {
                 
                 HStack {
                     Text("Intensity")
-                    Slider(value: self.$filterIntensity)
+                    Slider(value: intensity)
                 }
                 .padding(.vertical)
                 
