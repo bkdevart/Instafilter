@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA2A33E026549AD00037A853 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A33DF26549AD00037A853 /* ImageSaver.swift */; };
 		CA2F4938264EEF28005C7F15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F4937264EEF28005C7F15 /* AppDelegate.swift */; };
 		CA2F493A264EEF28005C7F15 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F4939264EEF28005C7F15 /* SceneDelegate.swift */; };
 		CA2F493C264EEF28005C7F15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F493B264EEF28005C7F15 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA2A33DF26549AD00037A853 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		CA2F4934264EEF28005C7F15 /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2F4937264EEF28005C7F15 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA2F4939264EEF28005C7F15 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				CA2F4937264EEF28005C7F15 /* AppDelegate.swift */,
 				CA2F4939264EEF28005C7F15 /* SceneDelegate.swift */,
 				CA2F493B264EEF28005C7F15 /* ContentView.swift */,
+				CA2A33DF26549AD00037A853 /* ImageSaver.swift */,
 				CAA631802652F1100053A4BC /* ImagePicker.swift */,
 				CA2F4940264EEF29005C7F15 /* Assets.xcassets */,
 				CA2F4945264EEF29005C7F15 /* LaunchScreen.storyboard */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA2F4938264EEF28005C7F15 /* AppDelegate.swift in Sources */,
+				CA2A33E026549AD00037A853 /* ImageSaver.swift in Sources */,
 				CA2F493F264EEF28005C7F15 /* Instafilter.xcdatamodeld in Sources */,
 				CAA631812652F1100053A4BC /* ImagePicker.swift in Sources */,
 				CA2F493A264EEF28005C7F15 /* SceneDelegate.swift in Sources */,
