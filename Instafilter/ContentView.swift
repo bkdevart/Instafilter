@@ -9,6 +9,11 @@ import CoreImage
 import CoreImage.CIFilterBuiltins
 import SwiftUI
 
+struct ErrorAlert: Identifiable {
+    var id: String { errorMessage }
+    let errorMessage: String
+}
+
 struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
@@ -20,6 +25,8 @@ struct ContentView: View {
     
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
+    
+    @State private var errorAlert: ErrorAlert?
     
     var body: some View {
         let intensity = Binding<Double>(
@@ -66,7 +73,12 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save") {
-                        guard let processedImage = self.processedImage else { return }
+                        
+                        guard let processedImage = self.processedImage else {
+                            // Try making the Save button show an error if there was no image in the image view.
+                            errorAlert = ErrorAlert(errorMessage: "Please select an image to filter")
+                            return
+                        }
                         
                         let imageSaver = ImageSaver()
                         
@@ -98,6 +110,11 @@ struct ContentView: View {
                     .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
                     .cancel()
                 ])
+            }
+            .alert(item: $errorAlert) { alert in
+                        Alert(title: Text("Error"),
+                              message: Text(alert.errorMessage),
+                              dismissButton: .cancel(Text("OK")))
             }
         }
     }
