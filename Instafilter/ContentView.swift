@@ -14,9 +14,17 @@ struct ErrorAlert: Identifiable {
     let errorMessage: String
 }
 
+enum SliderChosen {
+    case intensity
+    case radius
+    case scale
+}
+
 struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 0.5
+    @State private var filterScale = 0.5
     
     @State private var showingFilterSheet = false
     @State private var showingImagePicker = false
@@ -29,6 +37,8 @@ struct ContentView: View {
     
     @State private var errorAlert: ErrorAlert?
     
+    private var slider = SliderChosen.intensity
+    
     var body: some View {
         let intensity = Binding<Double>(
             get: {
@@ -36,7 +46,27 @@ struct ContentView: View {
             },
             set: {
                 self.filterIntensity = $0
-                self.applyProcessing()
+                self.applyProcessing(slider: .intensity)
+            }
+        )
+        
+        let radius = Binding<Double>(
+            get: {
+                self.filterRadius
+            },
+            set: {
+                self.filterRadius = $0
+                self.applyProcessing(slider: .radius)
+            }
+        )
+        
+        let scale = Binding<Double>(
+            get: {
+                self.filterScale
+            },
+            set: {
+                self.filterScale = $0
+                self.applyProcessing(slider: .scale)
             }
         )
         
@@ -60,6 +90,7 @@ struct ContentView: View {
                     self.showingImagePicker = true
                 }
                 
+                // Experiment with having more than one slider, to control each of the input keys you care about. For example, you might have one for radius and one for intensity.
                 HStack {
                     Text("Intensity")
                     Slider(value: intensity)
@@ -67,7 +98,18 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    // Make the Change Filter button change its title to show the name of the currently selected filter.
+                    Text("Radius")
+                    Slider(value: radius)
+                }
+                .padding(.vertical)
+                
+                HStack {
+                    Text("Scale")
+                    Slider(value: scale)
+                }
+                .padding(.vertical)
+                
+                HStack {
                     Button("\(filterDisplayName)") {
                         self.showingFilterSheet = true
                     }
@@ -146,22 +188,29 @@ struct ContentView: View {
         
         let beginImage = CIImage(image: inputImage)
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        applyProcessing()
+        applyProcessing(slider: .intensity)
     }
     
-    func applyProcessing() {
+    func applyProcessing(slider: SliderChosen) {
         let inputKeys = currentFilter.inputKeys
-        if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
-        if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
+        print("\(inputKeys)")
         
+        switch slider {
+        case .intensity:
+            if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
+        case .radius:
+            if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey) }
+        case .scale:
+            if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale * 10, forKey: kCIInputScaleKey) }
+        }
         guard let outputImage = currentFilter.outputImage else { return }
-        
+    
         if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImage = UIImage(cgImage: cgimg)
             image = Image(uiImage: uiImage)
             processedImage = uiImage
         }
+        
     }
     
     func setFilter(_ filter: CIFilter) {
