@@ -201,7 +201,7 @@ struct ContentView: View {
         case .radius:
             if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey) }
         case .scale:
-            if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale * 10, forKey: kCIInputScaleKey) }
+            if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterScale * 50, forKey: kCIInputScaleKey) }
         }
         guard let outputImage = currentFilter.outputImage else { return }
     
