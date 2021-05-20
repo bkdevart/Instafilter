@@ -24,6 +24,7 @@ struct ContentView: View {
     @State private var processedImage: UIImage?
     
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
+    @State var filterDisplayName = "Sepia Tone"
     let context = CIContext()
     
     @State private var errorAlert: ErrorAlert?
@@ -66,7 +67,8 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter") {
+                    // Make the Change Filter button change its title to show the name of the currently selected filter.
+                    Button("\(filterDisplayName)") {
                         self.showingFilterSheet = true
                     }
                     
@@ -75,7 +77,6 @@ struct ContentView: View {
                     Button("Save") {
                         
                         guard let processedImage = self.processedImage else {
-                            // Try making the Save button show an error if there was no image in the image view.
                             errorAlert = ErrorAlert(errorMessage: "Please select an image to filter")
                             return
                         }
@@ -101,13 +102,34 @@ struct ContentView: View {
             }
             .actionSheet(isPresented: $showingFilterSheet) {
                 ActionSheet(title: Text("Select a filter"), buttons: [
-                    .default(Text("Crystallize")) { self.setFilter(CIFilter.crystallize()) },
-                    .default(Text("Edges")) { self.setFilter(CIFilter.edges()) },
-                    .default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur()) },
-                    .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()) },
-                    .default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone()) },
-                    .default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask()) },
-                    .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
+                    .default(Text("Crystallize")) {
+                        filterDisplayName = "Crystallize"
+                        self.setFilter(CIFilter.crystallize())
+                    },
+                    .default(Text("Edges")) {
+                        filterDisplayName = "Edges"
+                        self.setFilter(CIFilter.edges())
+                    },
+                    .default(Text("Gaussian Blur")) {
+                        filterDisplayName = "Guassian Blur"
+                        self.setFilter(CIFilter.gaussianBlur())
+                    },
+                    .default(Text("Pixellate")) {
+                        filterDisplayName = "Pixellate"
+                        self.setFilter(CIFilter.pixellate())
+                    },
+                    .default(Text("Sepia Tone")) {
+                        filterDisplayName = "Sepia Tone"
+                        self.setFilter(CIFilter.sepiaTone())
+                    },
+                    .default(Text("Unsharp Mask")) {
+                        filterDisplayName = "Unsharp Mask"
+                        self.setFilter(CIFilter.unsharpMask())
+                    },
+                    .default(Text("Vignette")) {
+                        filterDisplayName = "Vignette"
+                        self.setFilter(CIFilter.vignette())
+                    },
                     .cancel()
                 ])
             }
